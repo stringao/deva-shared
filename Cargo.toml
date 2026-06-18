@@ -1,0 +1,15 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/core",
+    "crates/github",
+    "crates/azure_devops",
+    "crates/telegram",
+    "crates/generator",
+]
+
+[package]
+name = "deva-shared"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
