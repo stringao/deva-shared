@@ -1,22 +1,13 @@
-use std::fmt;
+use thiserror::Error;
 
-#[derive(Debug)]
-pub struct Error {
-    message: String,
+#[derive(Error, Debug)]
+pub enum AzureError {
+    #[error("Authentication error: {0}")]
+    AuthError(String),
+
+    #[error("API error: {0}")]
+    ApiError(String),
+
+    #[error("Not found: {0}")]
+    NotFound(String),
 }
-
-impl Error {
-    pub fn new(message: impl Into<String>) -> Self {
-        Self {
-            message: message.into(),
-        }
-    }
-}
-
-impl fmt::Display for Error {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(f, "{}", self.message)
-    }
-}
-
-impl std::error::Error for Error {}
